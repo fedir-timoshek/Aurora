@@ -1,9 +1,11 @@
+import Image from "next/image";
 import { content } from "@/lib/content";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/Motion";
 import PresentHints from "@/components/PresentHints";
 
 const Hero = () => {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const assetPrefix = basePath ? basePath : "";
 
   return (
     <section id="top" className="relative overflow-hidden bg-night-950">
@@ -79,13 +81,13 @@ const Hero = () => {
             <div className="relative space-y-6">
               <div className="flex items-center gap-4">
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-neon-400/40 bg-night-800/80 p-2 shadow-glow">
-                  <img
-                    src={`${basePath}/svg/illus/truck.svg`}
+                  <Image
+                    src={`${assetPrefix}/svg/illus/truck.svg`}
                     alt="Ілюстрація вантажівки"
                     width={40}
                     height={40}
-                    loading="eager"
-                    decoding="async"
+                    unoptimized
+                    priority
                   />
                 </div>
                 <div>
@@ -108,15 +110,14 @@ const Hero = () => {
           <div className="absolute -bottom-6 -right-6 hidden h-32 w-32 animate-float-slow rounded-full border border-neon-400/40 bg-neon-500/20 blur-xl md:block" />
         </div>
       </div>
-      <img
-        src={`${basePath}/svg/cityline.svg`}
+      <Image
+        src={`${assetPrefix}/svg/cityline.svg`}
         alt=""
         width={1400}
         height={240}
         className="pointer-events-none absolute bottom-0 left-0 z-0 w-full translate-y-6 opacity-50"
-        loading="lazy"
-        decoding="async"
         aria-hidden="true"
+        unoptimized
       />
     </section>
   );

@@ -1,15 +1,17 @@
+import Image from "next/image";
+
 import { content } from "@/lib/content";
 import { RevealLine, StaggerContainer, StaggerItem } from "@/components/Motion";
 import PresentHints from "@/components/PresentHints";
 
 const Services = () => {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const assetPrefix = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const icons = [
-    { src: `${basePath}/svg/illus/truck.svg`, alt: "Ілюстрація вантажівки" },
-    { src: `${basePath}/svg/illus/box.svg`, alt: "Ілюстрація вантажу" },
-    { src: `${basePath}/svg/illus/route.svg`, alt: "Ілюстрація маршруту" },
-    { src: `${basePath}/svg/illus/clipboard.svg`, alt: "Ілюстрація контролю процесу" },
-    { src: `${basePath}/svg/illus/service.svg`, alt: "Ілюстрація технічного сервісу" }
+    { src: `${assetPrefix}/svg/illus/truck.svg`, alt: "Ілюстрація вантажівки" },
+    { src: `${assetPrefix}/svg/illus/box.svg`, alt: "Ілюстрація вантажу" },
+    { src: `${assetPrefix}/svg/illus/route.svg`, alt: "Ілюстрація маршруту" },
+    { src: `${assetPrefix}/svg/illus/clipboard.svg`, alt: "Ілюстрація контролю процесу" },
+    { src: `${assetPrefix}/svg/illus/service.svg`, alt: "Ілюстрація технічного сервісу" }
   ];
 
   return (
@@ -45,14 +47,7 @@ const Services = () => {
                   </div>
                   <div className="relative space-y-4">
                     <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-neon-400/40 bg-night-900/80 shadow-glow">
-                      <img
-                        src={icon.src}
-                        alt={icon.alt}
-                        width={40}
-                        height={40}
-                        loading="lazy"
-                        decoding="async"
-                      />
+                      <Image src={icon.src} alt={icon.alt} width={40} height={40} unoptimized />
                     </div>
                     <h3 className="text-lg font-semibold text-white">{service.title}</h3>
                     <p className="text-sm text-slate-300">{service.description}</p>

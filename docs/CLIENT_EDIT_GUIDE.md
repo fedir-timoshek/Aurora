@@ -4,7 +4,6 @@
 - Основний файл: `lib/content.ts`
 - PLACEHOLDER-и:
   - `PLACEHOLDER_URL`
-  - `PLACEHOLDER_WORK_HOURS`
   - `PLACEHOLDER_EMAIL`
   - `PLACEHOLDER_PRICE`
 

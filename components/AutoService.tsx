@@ -1,9 +1,11 @@
+import Image from "next/image";
+
 import { content } from "@/lib/content";
 import { FadeUp, RevealLine } from "@/components/Motion";
 import PresentHints from "@/components/PresentHints";
 
 const AutoService = () => {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const assetPrefix = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
   return (
     <section id="autoservice" className="relative bg-night-900 py-20">
@@ -36,13 +38,12 @@ const AutoService = () => {
           <div className="relative space-y-4">
             <div className="flex items-center gap-4">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-neon-400/40 bg-night-900/80 shadow-glow">
-                <img
-                  src={`${basePath}/svg/illus/service.svg`}
+                <Image
+                  src={`${assetPrefix}/svg/illus/service.svg`}
                   alt="Ілюстрація сервісу"
                   width={40}
                   height={40}
-                  loading="lazy"
-                  decoding="async"
+                  unoptimized
                 />
               </div>
               <div>

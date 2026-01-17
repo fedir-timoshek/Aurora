@@ -8,7 +8,7 @@ export const content = {
     phoneHref: "+380442571038",
     address: "Голосіївський проспект, 130/57, м. Київ, Україна, 03127",
     url: siteUrl,
-    workHours: "PLACEHOLDER_WORK_HOURS",
+    workHours: "Пн–Пт: 09:00–18:00; Сб–Нд: зачинено",
     email: "PLACEHOLDER_EMAIL"
   },
   hero: {
@@ -188,7 +188,7 @@ export const content = {
   },
   placeholders: {
     price: "PLACEHOLDER_PRICE",
-    workHours: "PLACEHOLDER_WORK_HOURS",
+    workHours: "Пн–Пт: 09:00–18:00; Сб–Нд: зачинено",
     url: siteUrl
   }
 };
