@@ -1,5 +1,5 @@
 import { content } from "@/lib/content";
-import { FadeUp } from "@/components/Motion";
+import { FadeUp, RevealLine, StaggerContainer, StaggerItem } from "@/components/Motion";
 import PresentHints from "@/components/PresentHints";
 
 const UseCases = () => {
@@ -12,16 +12,16 @@ const UseCases = () => {
             {content.useCases.title}
           </h2>
         </FadeUp>
-        <div className="mt-8 flex flex-wrap gap-3">
+        <RevealLine className="mt-6 h-px w-24 bg-gradient-to-r from-neon-400/80 to-transparent" />
+        <StaggerContainer className="mt-8 flex flex-wrap gap-3">
           {content.useCases.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full border border-white/10 bg-night-900/70 px-4 py-2 text-sm text-slate-200"
-            >
-              {tag}
-            </span>
+            <StaggerItem key={tag}>
+              <span className="rounded-full border border-white/10 bg-night-900/70 px-4 py-2 text-sm text-slate-200">
+                {tag}
+              </span>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

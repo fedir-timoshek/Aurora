@@ -1,5 +1,5 @@
 import { content } from "@/lib/content";
-import { FadeUp } from "@/components/Motion";
+import { FadeUp, RevealLine, StaggerContainer, StaggerItem } from "@/components/Motion";
 import PresentHints from "@/components/PresentHints";
 
 const Cases = () => {
@@ -10,17 +10,17 @@ const Cases = () => {
         <FadeUp>
           <h2 className="text-3xl font-semibold text-white md:text-4xl">{content.cases.title}</h2>
         </FadeUp>
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <RevealLine className="mt-6 h-px w-24 bg-gradient-to-r from-neon-400/80 to-transparent" />
+        <StaggerContainer className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {content.cases.items.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-2xl border border-white/10 bg-night-900/70 p-6"
-            >
-              <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-              <p className="mt-3 text-sm text-slate-300">{item.description}</p>
-            </div>
+            <StaggerItem key={item.title}>
+              <div className="rounded-2xl border border-white/10 bg-night-900/70 p-6">
+                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                <p className="mt-3 text-sm text-slate-300">{item.description}</p>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

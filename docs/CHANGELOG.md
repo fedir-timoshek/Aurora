@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.2] - 2026-01-17
+### Added
+- Scroll animations: stagger reveals для карток і лінії-акценти під заголовками.
+
 ## [0.2.1] - 2026-01-17
 ### Added
 - Анімований екран завантаження з вантажівкою.

@@ -1,5 +1,5 @@
 import { content } from "@/lib/content";
-import { StaggerContainer, StaggerItem } from "@/components/Motion";
+import { RevealLine, StaggerContainer, StaggerItem } from "@/components/Motion";
 import PresentHints from "@/components/PresentHints";
 
 const Services = () => {
@@ -31,37 +31,37 @@ const Services = () => {
             </p>
           </StaggerItem>
         </StaggerContainer>
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <RevealLine className="mt-8 h-px w-24 bg-gradient-to-r from-neon-400/80 to-transparent" />
+        <StaggerContainer className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {content.services.items.map((service, index) => {
             const icon = icons[index % icons.length];
 
             return (
-              <div
-                key={service.title}
-                className="card-sweep group relative overflow-hidden rounded-2xl border border-white/10 bg-night-950/70 p-6 transition duration-300 hover:-translate-y-1 hover:rotate-[0.35deg] hover:border-neon-400/60 hover:shadow-glow focus-within:border-neon-400/60"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-neon-500/5 via-transparent to-aurora-400/10 opacity-0 transition group-hover:opacity-100" />
-                <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                  <div className="sweep-hover h-full w-1/2 bg-gradient-to-r from-transparent via-neon-300/20 to-transparent" />
-                </div>
-                <div className="relative space-y-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-neon-400/40 bg-night-900/80 shadow-glow">
-                    <img
-                      src={icon.src}
-                      alt={icon.alt}
-                      width={40}
-                      height={40}
-                      loading="lazy"
-                      decoding="async"
-                    />
+              <StaggerItem key={service.title}>
+                <div className="card-sweep group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-night-950/70 p-6 transition duration-300 hover:-translate-y-1 hover:rotate-[0.35deg] hover:border-neon-400/60 hover:shadow-glow focus-within:border-neon-400/60">
+                  <div className="absolute inset-0 bg-gradient-to-br from-neon-500/5 via-transparent to-aurora-400/10 opacity-0 transition group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                    <div className="sweep-hover h-full w-1/2 bg-gradient-to-r from-transparent via-neon-300/20 to-transparent" />
                   </div>
-                  <h3 className="text-lg font-semibold text-white">{service.title}</h3>
-                  <p className="text-sm text-slate-300">{service.description}</p>
+                  <div className="relative space-y-4">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-neon-400/40 bg-night-900/80 shadow-glow">
+                      <img
+                        src={icon.src}
+                        alt={icon.alt}
+                        width={40}
+                        height={40}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <h3 className="text-lg font-semibold text-white">{service.title}</h3>
+                    <p className="text-sm text-slate-300">{service.description}</p>
+                  </div>
                 </div>
-              </div>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

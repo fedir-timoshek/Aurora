@@ -1,5 +1,5 @@
 import { content } from "@/lib/content";
-import { FadeUp } from "@/components/Motion";
+import { FadeUp, RevealLine } from "@/components/Motion";
 import PresentHints from "@/components/PresentHints";
 
 const AutoService = () => {
@@ -15,13 +15,18 @@ const AutoService = () => {
               {content.autoservice.title}
             </h2>
           </FadeUp>
-          <p className="text-base text-slate-200">{content.autoservice.description}</p>
-          <a
-            href="#quote"
-            className="inline-flex w-fit items-center rounded-full border border-neon-400/60 bg-neon-500/20 px-5 py-2 text-sm font-semibold text-neon-200 shadow-glow transition hover:border-neon-300 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neon-300"
-          >
-            {content.autoservice.cta}
-          </a>
+          <RevealLine className="h-px w-24 bg-gradient-to-r from-neon-400/80 to-transparent" />
+          <FadeUp>
+            <p className="text-base text-slate-200">{content.autoservice.description}</p>
+          </FadeUp>
+          <FadeUp>
+            <a
+              href="#quote"
+              className="inline-flex w-fit items-center rounded-full border border-neon-400/60 bg-neon-500/20 px-5 py-2 text-sm font-semibold text-neon-200 shadow-glow transition hover:border-neon-300 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neon-300"
+            >
+              {content.autoservice.cta}
+            </a>
+          </FadeUp>
         </div>
         <div className="card-sweep relative overflow-hidden rounded-3xl border border-white/10 bg-night-950/70 p-6">
           <div className="absolute inset-0 bg-gradient-to-br from-neon-500/10 via-transparent to-aurora-400/10" />
