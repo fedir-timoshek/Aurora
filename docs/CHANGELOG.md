@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.5] - 2026-01-17
+### Fixed
+- Lint: екранування апострофа в тексті модалки.
+- TS: додано `.next/types` до `tsconfig.json` для стабільного lint у CI.
+
 ## [0.1.4] - 2026-01-17
 ### Fixed
 - GitHub Actions lint: замінено `next.config.ts` на `next.config.mjs`.

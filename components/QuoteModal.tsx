@@ -78,7 +78,7 @@ const QuoteModal = () => {
           {content.contact.formTitle}
         </h2>
         <p className="mt-2 text-sm text-slate-300">
-          Опишіть задачу — ми підготуємо пропозицію та зв'яжемося з вами.
+          Опишіть задачу — ми підготуємо пропозицію та зв&apos;яжемося з вами.
         </p>
         <div className="mt-6">
           <LeadForm variant="modal" />

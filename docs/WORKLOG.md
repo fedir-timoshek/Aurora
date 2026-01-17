@@ -10,3 +10,4 @@
 - Проєкт перенесено в папку `Aurora`, додано `.gitignore`.
 - Оновлено workflow: підтримка збірки без lockfile.
 - Конфіг Next переведено на `next.config.mjs` для сумісності з GitHub Actions.
+- Виправлено lint помилку в модалці та оновлено `tsconfig.json` для `.next/types`.
