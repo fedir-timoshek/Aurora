@@ -110,12 +110,13 @@ const Hero = () => {
       </div>
       <img
         src={`${basePath}/svg/cityline.svg`}
-        alt="Силует нічного міста"
+        alt=""
         width={1400}
         height={240}
         className="pointer-events-none absolute bottom-0 left-0 z-0 w-full translate-y-6 opacity-50"
-        loading="eager"
+        loading="lazy"
         decoding="async"
+        aria-hidden="true"
       />
     </section>
   );

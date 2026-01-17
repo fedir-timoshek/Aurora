@@ -29,3 +29,9 @@
 - [ ] Перевірка `npm run check` (заблоковано: npm не знайдено)
 - [ ] Перевірка форми та /api/lead
 - [ ] Перевірка prefers-reduced-motion
+
+## Release
+- [ ] PLACEHOLDER-и замінені у `lib/content.ts`
+- [ ] GitHub Actions: build + deploy пройшли успішно
+- [ ] Перевірені сторінки: головна, 404, loading
+- [ ] Перевірка контенту на мобільних і десктопі

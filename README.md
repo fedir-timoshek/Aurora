@@ -9,6 +9,8 @@ npm install
 npm run dev
 ```
 
+Після `npm install` рекомендовано закоммітити `package-lock.json` для стабільних CI-збірок.
+
 ## Скрипти
 
 - `npm run dev`
@@ -39,3 +41,9 @@ npm run dev
 - `NEXT_PUBLIC_DEPLOY_TARGET=github-pages`
 
 Якщо потрібна форма на Pages, налаштуйте `NEXT_PUBLIC_FORM_ENDPOINT` у GitHub Secrets або залиште mailto fallback.
+
+## Перевірка перед релізом
+
+```bash
+npm run check
+```

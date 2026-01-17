@@ -17,6 +17,7 @@
 - `.github/workflows/deploy.yml` — GitHub Pages deploy.
 - `.env.example` — приклад змінних середовища.
 - `.gitignore` — виключення для Git.
+- `package-lock.json` — зафіксовані залежності.
 
 ## components/
 - `components/Navbar.tsx` — sticky header + scrollspy.
@@ -46,9 +47,6 @@
 - `lib/hooks/usePrefersReducedMotion.ts` — hook prefers-reduced-motion.
 
 ## public/
-- `public/svg/truck.svg` — іконка.
-- `public/svg/route.svg` — маршрут.
-- `public/svg/pin.svg` — локація.
 - `public/svg/aurora-veil.svg` — фонова aurora-ілюстрація.
 - `public/svg/cityline.svg` — силует міста.
 - `public/svg/mesh.svg` — сітка з точок.
