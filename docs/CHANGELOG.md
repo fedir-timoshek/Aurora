@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.3] - 2026-01-17
+### Fixed
+- GitHub Actions build: fallback to npm install when lockfile is missing.
+
 ## [0.1.2] - 2026-01-17
 ### Added
 - `.gitignore` for Git cleanup.

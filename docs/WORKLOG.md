@@ -8,3 +8,4 @@
 - Спроба `npm install` неуспішна (npm відсутній у середовищі).
 - Додано підтримку GitHub Pages (static export, workflow, basePath).
 - Проєкт перенесено в папку `Aurora`, додано `.gitignore`.
+- Оновлено workflow: підтримка збірки без lockfile.
