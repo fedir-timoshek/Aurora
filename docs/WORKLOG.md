@@ -13,3 +13,4 @@
 - Виправлено lint помилку в модалці та оновлено `tsconfig.json` для `.next/types`.
 - Виправлено build: прибрано `useSearchParams` з PresentHints, додано `metadataBase`, оновлено OG image градієнт.
 - Додано локальні SVG-ілюстрації (aurora veil, cityline, mesh) та оновлено Hero.
+- Замінено іконки сервісів і автосервісу на локальні SVG-ілюстрації.

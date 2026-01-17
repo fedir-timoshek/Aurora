@@ -23,6 +23,7 @@ Night city / neon aurora. Темний фон, холодні неонові а�
 - Tags: pill, нейтральний контраст
 - Form fields: rounded-xl, border focus neon
 - Modal: center, dark overlay, close button
+- Illustration badges: локальні SVG з неоновим контуром
 
 ## Токени (Tailwind)
 - shadow-glow, shadow-glowStrong

@@ -1,9 +1,10 @@
-import Image from "next/image";
 import { content } from "@/lib/content";
 import { FadeUp } from "@/components/Motion";
 import PresentHints from "@/components/PresentHints";
 
 const AutoService = () => {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
   return (
     <section id="autoservice" className="relative bg-night-900 py-20">
       <PresentHints label="Секція 6: Автосервіс" />
@@ -26,8 +27,15 @@ const AutoService = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-neon-500/10 via-transparent to-aurora-400/10" />
           <div className="relative space-y-4">
             <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-neon-400/40 bg-night-900">
-                <Image src="/svg/pin.svg" alt="Іконка сервісної точки" width={28} height={28} />
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-neon-400/40 bg-night-900/80 shadow-glow">
+                <img
+                  src={`${basePath}/svg/illus/service.svg`}
+                  alt="Ілюстрація сервісу"
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <div>
                 <p className="text-sm text-slate-300">Додатковий сервіс</p>

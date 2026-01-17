@@ -1,11 +1,17 @@
-import { Truck, Route, Package, ClipboardList, Wrench } from "lucide-react";
 import { content } from "@/lib/content";
 import { StaggerContainer, StaggerItem } from "@/components/Motion";
 import PresentHints from "@/components/PresentHints";
 
-const icons = [Truck, Package, Route, ClipboardList, Wrench];
-
 const Services = () => {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const icons = [
+    { src: `${basePath}/svg/illus/truck.svg`, alt: "Ілюстрація вантажівки" },
+    { src: `${basePath}/svg/illus/box.svg`, alt: "Ілюстрація вантажу" },
+    { src: `${basePath}/svg/illus/route.svg`, alt: "Ілюстрація маршруту" },
+    { src: `${basePath}/svg/illus/clipboard.svg`, alt: "Ілюстрація контролю процесу" },
+    { src: `${basePath}/svg/illus/service.svg`, alt: "Ілюстрація технічного сервісу" }
+  ];
+
   return (
     <section id="services" className="relative bg-night-900 py-20">
       <PresentHints label="Секція 2: Послуги" />
@@ -27,7 +33,7 @@ const Services = () => {
         </StaggerContainer>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {content.services.items.map((service, index) => {
-            const Icon = icons[index % icons.length];
+            const icon = icons[index % icons.length];
 
             return (
               <div
@@ -36,8 +42,15 @@ const Services = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-neon-500/5 via-transparent to-aurora-400/10 opacity-0 transition group-hover:opacity-100" />
                 <div className="relative space-y-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-neon-400/40 bg-night-900 text-neon-300">
-                    <Icon size={24} aria-hidden="true" />
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-neon-400/40 bg-night-900/80 shadow-glow">
+                    <img
+                      src={icon.src}
+                      alt={icon.alt}
+                      width={40}
+                      height={40}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                   <h3 className="text-lg font-semibold text-white">{service.title}</h3>
                   <p className="text-sm text-slate-300">{service.description}</p>

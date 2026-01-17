@@ -50,4 +50,9 @@
 - `public/svg/aurora-veil.svg` — фонова aurora-ілюстрація.
 - `public/svg/cityline.svg` — силует міста.
 - `public/svg/mesh.svg` — сітка з точок.
+- `public/svg/illus/truck.svg` — ілюстрація вантажівки.
+- `public/svg/illus/box.svg` — ілюстрація вантажу.
+- `public/svg/illus/route.svg` — ілюстрація маршруту.
+- `public/svg/illus/clipboard.svg` — ілюстрація контролю.
+- `public/svg/illus/service.svg` — ілюстрація сервісу.
 - `public/.nojekyll` — вимикає Jekyll для GitHub Pages.

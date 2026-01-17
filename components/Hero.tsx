@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { content } from "@/lib/content";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/Motion";
 import PresentHints from "@/components/PresentHints";
@@ -76,8 +75,15 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-neon-500/10" />
             <div className="relative space-y-6">
               <div className="flex items-center gap-4">
-                <div className="h-12 w-12 rounded-2xl border border-neon-400/40 bg-night-800 p-2 shadow-glow">
-                  <Image src="/svg/truck.svg" alt="Іконка вантажівки" width={32} height={32} />
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-neon-400/40 bg-night-800/80 p-2 shadow-glow">
+                  <img
+                    src={`${basePath}/svg/illus/truck.svg`}
+                    alt="Ілюстрація вантажівки"
+                    width={40}
+                    height={40}
+                    loading="eager"
+                    decoding="async"
+                  />
                 </div>
                 <div>
                   <p className="text-sm text-slate-300">Стратегічна логістика</p>
@@ -99,13 +105,14 @@ const Hero = () => {
           <div className="absolute -bottom-6 -right-6 hidden h-32 w-32 animate-float-slow rounded-full border border-neon-400/40 bg-neon-500/20 blur-xl md:block" />
         </div>
       </div>
-      <Image
-        src="/svg/cityline.svg"
+      <img
+        src={`${basePath}/svg/cityline.svg`}
         alt="Силует нічного міста"
         width={1400}
         height={240}
         className="pointer-events-none absolute bottom-0 left-0 w-full opacity-80"
-        priority
+        loading="eager"
+        decoding="async"
       />
     </section>
   );
