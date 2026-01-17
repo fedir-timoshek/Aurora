@@ -11,7 +11,7 @@
 - `app/icon.tsx` — favicon.
 
 ## config
-- `next.config.ts` — static export, basePath, images.
+- `next.config.mjs` — static export, basePath, images.
 - `.github/workflows/deploy.yml` — GitHub Pages deploy.
 - `.env.example` — приклад змінних середовища.
 - `.gitignore` — виключення для Git.

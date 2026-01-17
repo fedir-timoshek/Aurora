@@ -4,7 +4,7 @@
 - `app/layout.tsx`: metadata, шрифти, JSON-LD.
 - `app/page.tsx`: композиція секцій.
 - `app/api/lead/route.ts`: прийом ліда.
-- `next.config.ts`: static export, basePath для GitHub Pages.
+- `next.config.mjs`: static export, basePath для GitHub Pages.
 
 ## Компоненти
 - Server components за замовчуванням.
