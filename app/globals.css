@@ -25,6 +25,51 @@ main {
   outline: none;
 }
 
+.sweep-once {
+  transform: translateX(-120%);
+  animation: sweep 1.8s ease-out 0.25s 1 both;
+}
+
+.card-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-sweep .sweep-hover {
+  transform: translateX(-140%);
+  opacity: 0;
+  transition: transform 0.9s ease, opacity 0.6s ease;
+}
+
+.card-sweep:hover .sweep-hover {
+  transform: translateX(140%);
+  opacity: 1;
+}
+
+@keyframes sweep {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sweep-once,
+  .card-sweep .sweep-hover {
+    animation: none !important;
+    transition: none !important;
+    transform: translateX(-120%) !important;
+    opacity: 0;
+  }
+}
+
 .skip-link {
   position: absolute;
   top: -40px;

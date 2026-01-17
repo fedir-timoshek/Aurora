@@ -38,9 +38,12 @@ const Services = () => {
             return (
               <div
                 key={service.title}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-night-950/70 p-6 transition duration-300 hover:-translate-y-1 hover:rotate-[0.35deg] hover:border-neon-400/60 hover:shadow-glow focus-within:border-neon-400/60"
+                className="card-sweep group relative overflow-hidden rounded-2xl border border-white/10 bg-night-950/70 p-6 transition duration-300 hover:-translate-y-1 hover:rotate-[0.35deg] hover:border-neon-400/60 hover:shadow-glow focus-within:border-neon-400/60"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-neon-500/5 via-transparent to-aurora-400/10 opacity-0 transition group-hover:opacity-100" />
+                <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                  <div className="sweep-hover h-full w-1/2 bg-gradient-to-r from-transparent via-neon-300/20 to-transparent" />
+                </div>
                 <div className="relative space-y-4">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-neon-400/40 bg-night-900/80 shadow-glow">
                     <img

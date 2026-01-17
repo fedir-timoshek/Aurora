@@ -9,7 +9,7 @@ const Hero = () => {
     <section id="top" className="relative overflow-hidden bg-night-950">
       <PresentHints label="Секція 1: Hero" />
       <div
-        className="absolute inset-0 opacity-80"
+        className="absolute inset-0 z-0 opacity-80"
         style={{
           backgroundImage: `url(${basePath}/svg/aurora-veil.svg)`,
           backgroundSize: "cover",
@@ -17,12 +17,12 @@ const Hero = () => {
         }}
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-aurora-grid opacity-90" aria-hidden="true" />
-      <div className="absolute inset-0 animate-aurora-shift opacity-70" aria-hidden="true" />
-      <div className="absolute -left-32 top-24 h-64 w-64 rounded-full bg-neon-500/20 blur-3xl" aria-hidden="true" />
-      <div className="absolute right-0 top-10 h-72 w-72 rounded-full bg-aurora-400/20 blur-3xl" aria-hidden="true" />
+      <div className="absolute inset-0 z-0 bg-aurora-grid opacity-90" aria-hidden="true" />
+      <div className="absolute inset-0 z-0 animate-aurora-shift opacity-70" aria-hidden="true" />
+      <div className="absolute -left-32 top-24 z-0 h-64 w-64 rounded-full bg-neon-500/20 blur-3xl" aria-hidden="true" />
+      <div className="absolute right-0 top-10 z-0 h-72 w-72 rounded-full bg-aurora-400/20 blur-3xl" aria-hidden="true" />
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 z-0 opacity-20"
         style={{
           backgroundImage: `url(${basePath}/svg/mesh.svg)`,
           backgroundSize: "640px 360px",
@@ -31,7 +31,7 @@ const Hero = () => {
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 pb-20 pt-20 md:flex-row md:items-center md:pt-28">
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 pb-24 pt-20 md:flex-row md:items-center md:pt-28">
         <div className="flex-1">
           <StaggerContainer>
             <StaggerItem>
@@ -71,8 +71,11 @@ const Hero = () => {
           </FadeUp>
         </div>
         <div className="relative flex-1">
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-night-900/60 p-6 shadow-2xl">
+          <div className="card-sweep relative overflow-hidden rounded-3xl border border-white/10 bg-night-900/60 p-6 shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-neon-500/10" />
+            <div className="pointer-events-none absolute inset-0 overflow-hidden">
+              <div className="sweep-once h-full w-1/2 bg-gradient-to-r from-transparent via-neon-300/25 to-transparent" />
+            </div>
             <div className="relative space-y-6">
               <div className="flex items-center gap-4">
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-neon-400/40 bg-night-800/80 p-2 shadow-glow">
@@ -110,7 +113,7 @@ const Hero = () => {
         alt="Силует нічного міста"
         width={1400}
         height={240}
-        className="pointer-events-none absolute bottom-0 left-0 w-full opacity-80"
+        className="pointer-events-none absolute bottom-0 left-0 z-0 w-full translate-y-6 opacity-50"
         loading="eager"
         decoding="async"
       />

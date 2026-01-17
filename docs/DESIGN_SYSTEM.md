@@ -24,6 +24,7 @@ Night city / neon aurora. Темний фон, холодні неонові а�
 - Form fields: rounded-xl, border focus neon
 - Modal: center, dark overlay, close button
 - Illustration badges: локальні SVG з неоновим контуром
+- Card sweep: одноразовий світловий градієнт для преміального ефекту
 
 ## Токени (Tailwind)
 - shadow-glow, shadow-glowStrong

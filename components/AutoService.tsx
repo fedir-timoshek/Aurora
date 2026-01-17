@@ -23,8 +23,11 @@ const AutoService = () => {
             {content.autoservice.cta}
           </a>
         </div>
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-night-950/70 p-6">
+        <div className="card-sweep relative overflow-hidden rounded-3xl border border-white/10 bg-night-950/70 p-6">
           <div className="absolute inset-0 bg-gradient-to-br from-neon-500/10 via-transparent to-aurora-400/10" />
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div className="sweep-once h-full w-1/2 bg-gradient-to-r from-transparent via-neon-300/20 to-transparent" />
+          </div>
           <div className="relative space-y-4">
             <div className="flex items-center gap-4">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-neon-400/40 bg-night-900/80 shadow-glow">
