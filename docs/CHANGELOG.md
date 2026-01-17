@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.1] - 2026-01-17
+### Added
+- Анімований екран завантаження з вантажівкою.
+- Сторінка 404 у стилі бренду.
+
 ## [0.2.0] - 2026-01-17
 ### Added
 - Преміальна sweep-анімація для hero та карток сервісів.

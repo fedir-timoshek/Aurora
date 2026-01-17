@@ -4,6 +4,8 @@
 - `app/layout.tsx` — шрифти, metadata, JSON-LD.
 - `app/page.tsx` — композиція секцій.
 - `app/globals.css` — глобальні стилі.
+- `app/loading.tsx` — екран завантаження.
+- `app/not-found.tsx` — сторінка 404.
 - `app/api/lead/route.ts` — endpoint заявок.
 - `app/sitemap.ts` — sitemap generator.
 - `app/robots.ts` — robots generator.

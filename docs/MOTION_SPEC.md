@@ -16,3 +16,4 @@
 - Process: path draw (stroke-dashoffset).
 - Background: легкий aurora-shift (єдине нескінченне).
 - Premium sweep: одноразовий градієнтний «проліт» по картках (hero, services, autoservice).
+- Loading: truck bob + wheel spin + moving light track.
