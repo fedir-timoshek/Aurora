@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.4] - 2026-01-17
+### Fixed
+- FAQ: відповіді приховані за замовчуванням, додано aria-controls.
+
 ## [0.2.3] - 2026-01-17
 ### Fixed
 - FAQ: вирівняні відступи та посилено акцентну лінію під заголовком.

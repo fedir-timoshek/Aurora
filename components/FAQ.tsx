@@ -8,7 +8,7 @@ import PresentHints from "@/components/PresentHints";
 import { RevealLine, StaggerContainer, StaggerItem } from "@/components/Motion";
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section id="faq" className="relative bg-night-900 py-20">
@@ -19,15 +19,19 @@ const FAQ = () => {
         <StaggerContainer className="mt-6 space-y-4">
           {content.faq.items.map((item, index) => {
             const isOpen = openIndex === index;
+            const questionId = `faq-question-${index}`;
+            const answerId = `faq-answer-${index}`;
 
             return (
               <StaggerItem key={item.question}>
                 <div className="rounded-2xl border border-white/10 bg-night-950/70">
                   <button
                     type="button"
+                    id={questionId}
                     className="flex w-full items-center justify-between gap-4 px-6 py-4 text-left text-base font-medium text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neon-300"
                     onClick={() => setOpenIndex(isOpen ? null : index)}
                     aria-expanded={isOpen}
+                    aria-controls={answerId}
                   >
                     {item.question}
                     <ChevronDown
@@ -39,9 +43,13 @@ const FAQ = () => {
                     />
                   </button>
                   <div
+                    id={answerId}
+                    role="region"
+                    aria-labelledby={questionId}
+                    aria-hidden={!isOpen}
                     className={cn(
-                      "grid overflow-hidden transition-all duration-300",
-                      isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                      "overflow-hidden transition-[max-height,opacity] duration-300 ease-out",
+                      isOpen ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"
                     )}
                   >
                     <div className="px-6 pb-4 text-sm text-slate-300">{item.answer}</div>
