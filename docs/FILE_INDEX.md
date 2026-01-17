@@ -47,4 +47,7 @@
 - `public/svg/truck.svg` — іконка.
 - `public/svg/route.svg` — маршрут.
 - `public/svg/pin.svg` — локація.
+- `public/svg/aurora-veil.svg` — фонова aurora-ілюстрація.
+- `public/svg/cityline.svg` — силует міста.
+- `public/svg/mesh.svg` — сітка з точок.
 - `public/.nojekyll` — вимикає Jekyll для GitHub Pages.

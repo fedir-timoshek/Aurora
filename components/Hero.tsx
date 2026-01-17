@@ -4,13 +4,33 @@ import { FadeUp, StaggerContainer, StaggerItem } from "@/components/Motion";
 import PresentHints from "@/components/PresentHints";
 
 const Hero = () => {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
   return (
     <section id="top" className="relative overflow-hidden bg-night-950">
       <PresentHints label="Секція 1: Hero" />
+      <div
+        className="absolute inset-0 opacity-80"
+        style={{
+          backgroundImage: `url(${basePath}/svg/aurora-veil.svg)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}
+        aria-hidden="true"
+      />
       <div className="absolute inset-0 bg-aurora-grid opacity-90" aria-hidden="true" />
       <div className="absolute inset-0 animate-aurora-shift opacity-70" aria-hidden="true" />
       <div className="absolute -left-32 top-24 h-64 w-64 rounded-full bg-neon-500/20 blur-3xl" aria-hidden="true" />
       <div className="absolute right-0 top-10 h-72 w-72 rounded-full bg-aurora-400/20 blur-3xl" aria-hidden="true" />
+      <div
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage: `url(${basePath}/svg/mesh.svg)`,
+          backgroundSize: "640px 360px",
+          backgroundPosition: "center"
+        }}
+        aria-hidden="true"
+      />
 
       <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 pb-20 pt-20 md:flex-row md:items-center md:pt-28">
         <div className="flex-1">
@@ -79,6 +99,14 @@ const Hero = () => {
           <div className="absolute -bottom-6 -right-6 hidden h-32 w-32 animate-float-slow rounded-full border border-neon-400/40 bg-neon-500/20 blur-xl md:block" />
         </div>
       </div>
+      <Image
+        src="/svg/cityline.svg"
+        alt="Силует нічного міста"
+        width={1400}
+        height={240}
+        className="pointer-events-none absolute bottom-0 left-0 w-full opacity-80"
+        priority
+      />
     </section>
   );
 };
