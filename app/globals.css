@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  @apply bg-night-950 text-white antialiased;
+  font-feature-settings: "ss01";
+}
+
+main {
+  outline: none;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 16px;
+  z-index: 50;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #22c5ff;
+  color: #0b0b14;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+[data-present="true"] section {
+  outline: 1px dashed rgba(124, 249, 255, 0.35);
+  outline-offset: -1px;
+}
+
+::selection {
+  background: rgba(34, 197, 255, 0.3);
+}

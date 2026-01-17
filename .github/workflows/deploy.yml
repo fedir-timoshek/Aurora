@@ -1,0 +1,77 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Disable API routes for static export
+        shell: bash
+        run: |
+          if [ -d app/api ]; then
+            mv app/api .tmp-api
+          fi
+
+      - name: Configure base path
+        shell: bash
+        run: |
+          REPO_NAME="${{ github.event.repository.name }}"
+          OWNER="${{ github.repository_owner }}"
+          if [ "$REPO_NAME" = "${OWNER}.github.io" ]; then
+            echo "BASE_PATH=" >> $GITHUB_ENV
+            echo "SITE_URL=https://${OWNER}.github.io" >> $GITHUB_ENV
+          else
+            echo "BASE_PATH=/${REPO_NAME}" >> $GITHUB_ENV
+            echo "SITE_URL=https://${OWNER}.github.io/${REPO_NAME}" >> $GITHUB_ENV
+          fi
+
+      - name: Build static site
+        run: npm run build
+        env:
+          NEXT_OUTPUT: export
+          NEXT_PUBLIC_BASE_PATH: ${{ env.BASE_PATH }}
+          NEXT_PUBLIC_SITE_URL: ${{ env.SITE_URL }}
+          NEXT_PUBLIC_DEPLOY_TARGET: github-pages
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
