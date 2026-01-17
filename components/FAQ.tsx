@@ -15,8 +15,8 @@ const FAQ = () => {
       <PresentHints label="Секція 8: FAQ" />
       <div className="mx-auto w-full max-w-6xl px-6">
         <h2 className="text-3xl font-semibold text-white md:text-4xl">{content.faq.title}</h2>
-        <RevealLine className="mt-6 h-px w-20 bg-gradient-to-r from-neon-400/80 to-transparent" />
-        <StaggerContainer className="mt-10 space-y-4">
+        <RevealLine className="mt-4 h-px w-28 bg-gradient-to-r from-neon-400/90 via-neon-300/50 to-transparent" />
+        <StaggerContainer className="mt-6 space-y-4">
           {content.faq.items.map((item, index) => {
             const isOpen = openIndex === index;
 
