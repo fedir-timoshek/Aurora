@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.6] - 2026-01-17
+### Fixed
+- Static export: прибрано `useSearchParams` з PresentHints.
+- SEO: додано `metadataBase` для коректного OG/Twitter.
+- OG image: сумісний градієнт для `@vercel/og`.
+
 ## [0.1.5] - 2026-01-17
 ### Fixed
 - Lint: екранування апострофа в тексті модалки.

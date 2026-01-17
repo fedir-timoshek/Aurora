@@ -1,15 +1,29 @@
 "use client";
 
-import { useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface PresentHintsProps {
   label: string;
 }
 
 const PresentHints = ({ label }: PresentHintsProps) => {
-  const params = useSearchParams();
-  const isPresent = params?.get("present") === "1";
+  const [isPresent, setIsPresent] = useState(false);
+
+  useEffect(() => {
+    const updateFromLocation = () => {
+      const params = new URLSearchParams(window.location.search);
+      setIsPresent(params.get("present") === "1");
+    };
+
+    updateFromLocation();
+    window.addEventListener("popstate", updateFromLocation);
+    window.addEventListener("hashchange", updateFromLocation);
+
+    return () => {
+      window.removeEventListener("popstate", updateFromLocation);
+      window.removeEventListener("hashchange", updateFromLocation);
+    };
+  }, []);
 
   useEffect(() => {
     if (isPresent) {

@@ -20,7 +20,7 @@ export default function OpenGraphImage() {
           alignItems: "center",
           backgroundColor: "#0b0b14",
           backgroundImage:
-            "radial-gradient(900px 400px at 10% 10%, rgba(34,197,255,0.35), transparent 60%), radial-gradient(600px 500px at 90% 20%, rgba(99,240,160,0.35), transparent 55%), radial-gradient(700px 400px at 40% 0%, rgba(255,47,133,0.3), transparent 60%)"
+            "radial-gradient(circle at 10% 10%, rgba(34,197,255,0.35) 0%, transparent 60%), radial-gradient(circle at 90% 20%, rgba(99,240,160,0.35) 0%, transparent 55%), radial-gradient(circle at 40% 0%, rgba(255,47,133,0.3) 0%, transparent 60%)"
         }}
       >
         <div

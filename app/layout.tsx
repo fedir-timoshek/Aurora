@@ -11,10 +11,15 @@ const manrope = Manrope({
   display: "swap"
 });
 
+const safeMetadataBase = content.brand.url.startsWith("http")
+  ? content.brand.url
+  : "https://example.com";
+
 export const metadata: Metadata = {
   title: "Аврора Авто — вантажні перевезення та автосервіс у Києві",
   description:
     "ТОВ «Аврора Авто» організовує вантажні перевезення, переїзди та супутні транспортні послуги. Логістика й автосервіс у Києві та Україні.",
+  metadataBase: new URL(safeMetadataBase),
   alternates: {
     canonical: content.brand.url
   },
