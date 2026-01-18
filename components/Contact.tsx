@@ -8,6 +8,8 @@ const Contact = () => {
   const mapQuery = encodeURIComponent(content.brand.address);
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
   const mapEmbedUrl = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
+  const hasEmail =
+    Boolean(content.brand.email) && !content.brand.email.includes("PLACEHOLDER");
 
   return (
     <section id="contact" className="relative bg-night-900 py-20">
@@ -80,9 +82,11 @@ const Contact = () => {
               <p>
                 Графік роботи: <span className="text-white">{content.brand.workHours}</span>
               </p>
-              <p className="mt-2">
-                Email: <span className="text-white">{content.brand.email}</span>
-              </p>
+              {hasEmail && (
+                <p className="mt-2">
+                  Email: <span className="text-white">{content.brand.email}</span>
+                </p>
+              )}
             </div>
           </FadeUp>
         </div>

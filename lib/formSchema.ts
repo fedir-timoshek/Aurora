@@ -13,6 +13,7 @@ export const leadSchema = z.object({
     .refine((value) => !value || /.+@.+\..+/.test(value), {
       message: content.contact.errors.email
     }),
+  website: z.string().optional(),
   service: z.string().min(1, content.contact.errors.required),
   description: z.string().optional(),
   consent: z.boolean().refine((value) => value, {
@@ -26,6 +27,7 @@ export const defaultLeadValues: LeadFormValues = {
   name: "",
   phone: "",
   email: "",
+  website: "",
   service: "",
   description: "",
   consent: false

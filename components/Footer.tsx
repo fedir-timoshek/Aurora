@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { content } from "@/lib/content";
 
 const Footer = () => {
@@ -11,6 +12,17 @@ const Footer = () => {
         <div className="space-y-2 text-xs">
           <p>{content.brand.address}</p>
           <p>{content.brand.phoneDisplay}</p>
+          <div className="flex flex-wrap gap-4">
+            {content.legal.links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-neon-200 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neon-300"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
           <p>
             © {new Date().getFullYear()} {content.brand.name}. {content.footer.copyright}
           </p>

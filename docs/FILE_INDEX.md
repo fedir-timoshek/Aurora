@@ -6,6 +6,8 @@
 - `app/globals.css` — глобальні стилі.
 - `app/loading.tsx` — екран завантаження.
 - `app/not-found.tsx` — сторінка 404.
+- `app/privacy/page.tsx` — політика обробки персональних даних.
+- `app/terms/page.tsx` — умови зв’язку.
 - `app/api/lead/route.ts` — endpoint заявок.
 - `app/sitemap.ts` — sitemap generator.
 - `app/robots.ts` — robots generator.

@@ -28,34 +28,90 @@ const LeadForm = ({ variant = "section", onSuccess, className }: LeadFormProps) 
   const formEndpoint = process.env.NEXT_PUBLIC_FORM_ENDPOINT ?? "/api/lead";
   const deployTarget = process.env.NEXT_PUBLIC_DEPLOY_TARGET ?? "default";
   const shouldUseMailto = formEndpoint === "/api/lead" && deployTarget === "github-pages";
+  const rateLimitMs = content.contact.formRateLimitMs ?? 60000;
+  const timeoutMs = content.contact.formTimeoutMs ?? 10000;
+  const rateLimitKey = "aurora_lead_last_submit";
+  const consent = content.contact.formConsent;
 
-  const openMailto = (values: LeadFormValues) => {
+  const isRateLimited = () => {
+    try {
+      const lastSubmit = window.localStorage.getItem(rateLimitKey);
+      if (!lastSubmit) {
+        return false;
+      }
+      return Date.now() - Number(lastSubmit) < rateLimitMs;
+    } catch {
+      return false;
+    }
+  };
+
+  const markSubmitted = () => {
+    try {
+      window.localStorage.setItem(rateLimitKey, String(Date.now()));
+    } catch {
+      // Ignore storage failures (private mode, denied access).
+    }
+  };
+
+  const resolveEmailTarget = () => {
+    const email = content.brand.email?.trim();
+    if (!email || email.includes("PLACEHOLDER")) {
+      return null;
+    }
+    return email;
+  };
+
+  const openMailto = (values: Omit<LeadFormValues, "website">) => {
+    const to = resolveEmailTarget();
+    if (!to) {
+      setToast(`${content.contact.formMessages.noEmail} ${content.brand.phoneDisplay}`);
+      return false;
+    }
     const subject = encodeURIComponent("Запит на розрахунок");
     const body = encodeURIComponent(
       `Ім’я: ${values.name}\nТелефон: ${values.phone}\nEmail: ${values.email || "-"}\nПослуга: ${values.service}\nОпис: ${values.description || "-"}`
     );
-    const to = content.brand.email || "PLACEHOLDER_EMAIL";
     window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    return true;
   };
 
   const onSubmit = async (values: LeadFormValues) => {
     setToast(null);
 
     try {
+      if (values.website) {
+        setToast(content.contact.formMessages.spam);
+        return;
+      }
+
+      if (isRateLimited()) {
+        setToast(content.contact.formMessages.rateLimit);
+        return;
+      }
+
+      const { website: _honeypot, ...payload } = values;
+
       if (shouldUseMailto) {
-        openMailto(values);
+        const didOpen = openMailto(payload);
+        if (!didOpen) {
+          return;
+        }
         setIsSuccess(true);
-        setToast("Відкриваємо поштовий клієнт для надсилання запиту.");
+        setToast(content.contact.formMessages.mailto);
         reset(defaultLeadValues);
+        markSubmitted();
         onSuccess?.();
         return;
       }
 
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(() => controller.abort(), timeoutMs);
       const response = await fetch(formEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values)
-      });
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      }).finally(() => window.clearTimeout(timeoutId));
 
       if (!response.ok) {
         throw new Error("Request failed");
@@ -64,9 +120,14 @@ const LeadForm = ({ variant = "section", onSuccess, className }: LeadFormProps) 
       setIsSuccess(true);
       setToast(content.contact.successText);
       reset(defaultLeadValues);
+      markSubmitted();
       onSuccess?.();
     } catch (error) {
-      setToast("Сталася помилка. Спробуйте ще раз трохи пізніше.");
+      if (error instanceof DOMException && error.name === "AbortError") {
+        setToast(content.contact.formMessages.timeout);
+        return;
+      }
+      setToast(content.contact.formMessages.error);
     }
   };
 
@@ -95,6 +156,16 @@ const LeadForm = ({ variant = "section", onSuccess, className }: LeadFormProps) 
         </div>
       ) : (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
+          <label className="sr-only" aria-hidden="true">
+            {content.contact.formHoneypotLabel}
+            <input
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              className="sr-only"
+              {...register("website")}
+            />
+          </label>
           <div className="grid gap-4 md:grid-cols-2">
             <label className="space-y-2 text-sm text-slate-200">
               {content.contact.formFields.name}*
@@ -168,7 +239,23 @@ const LeadForm = ({ variant = "section", onSuccess, className }: LeadFormProps) 
               {...register("consent")}
               aria-invalid={Boolean(errors.consent)}
             />
-            <span>{content.contact.formFields.consent}*</span>
+            <span>
+              {consent.prefix}{" "}
+              <a
+                href={consent.privacyHref}
+                className="text-neon-200 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neon-300"
+              >
+                {consent.privacyLabel}
+              </a>{" "}
+              {consent.connector}{" "}
+              <a
+                href={consent.termsHref}
+                className="text-neon-200 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neon-300"
+              >
+                {consent.termsLabel}
+              </a>
+              *
+            </span>
           </label>
           {errors.consent && (
             <span className="block text-xs text-magma-300">{errors.consent.message}</span>

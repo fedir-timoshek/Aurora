@@ -27,3 +27,10 @@
 - Context: Потрібен безкоштовний хостинг без серверного середовища.
 - Decision: Використано Next.js static export (`output: export`) з basePath та GitHub Actions.
 - Consequences: `/api/lead` не доступний у Pages, тому додано mailto fallback або зовнішній endpoint.
+
+## ADR-005: npm audit без force-оновлень
+- Date: 2026-01-18
+- Status: Accepted
+- Context: `npm audit fix --force` піднімає Next/Eslint-config до несумісних major-версій.
+- Decision: Не використовуємо `--force`, фіксуємо вразливості без breaking, додаємо `npm run audit:prod`.
+- Consequences: Частина dev-уразливостей може залишатися до безпечного апдейту Next/ESLint.

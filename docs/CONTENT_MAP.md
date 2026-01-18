@@ -44,6 +44,10 @@
 11. Footer
    - Юридичність, копірайт
 
+12. Legal pages
+   - Політика обробки персональних даних
+   - Умови зв’язку
+
 ## PLACEHOLDER-и
 - `PLACEHOLDER_URL`
 - `PLACEHOLDER_EMAIL`

@@ -11,6 +11,7 @@
 - Назва компанії, адреса, телефон: `content.brand`
 - Тексти секцій: `content.hero`, `content.services`, тощо
 - FAQ, сценарії, теги: відповідні блоки в `content`
+- Політики: `content.legal`
 
 ## SEO
 - Title/description задані в `app/layout.tsx` (українською).

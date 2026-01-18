@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.14] - 2026-01-18
+### Added
+- `npm run audit:prod` для безпечної перевірки прод-залежностей.
+### Fixed
+- Додано `tsconfig.tsbuildinfo` до `.gitignore`.
+### Changed
+- Оновлено QA/ADR нотатки щодо `npm audit`.
+
+## [0.2.13] - 2026-01-18
+### Fixed
+- Вирівняно `eslint-config-next` з Next 14.2.35 після `npm audit fix --force`.
+- Знижено TypeScript до 5.4.5 для сумісності з @typescript-eslint.
+
+## [0.2.12] - 2026-01-18
+### Added
+- Сторінки політик: обробка персональних даних та умови зв’язку.
+### Changed
+- Погодження у формі тепер містить посилання на політики.
+- Контактний блок приховує email, якщо він не заданий.
+- Оновлено sitemap для додаткових сторінок.
+
+## [0.2.11] - 2026-01-18
+### Added
+- Honeypot та client-side rate limit для форми.
+- Таймаут і дружні повідомлення для submit flow.
+
 ## [0.2.10] - 2026-01-17
 ### Changed
 - Додано фактичний графік роботи у контенті та документації.
